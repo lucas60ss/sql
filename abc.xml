@@ -1,0 +1,757 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- SQL XML created by WWW SQL Designer, https://github.com/ondras/wwwsqldesigner/ -->
+<!-- Active URL: https://sql.toad.cz/ -->
+<sql>
+<datatypes db="mysql">
+	<group label="Numeric" color="rgb(238,238,170)">
+		<type label="Integer" length="0" sql="INTEGER" quote=""/>
+	 	<type label="TINYINT" length="0" sql="TINYINT" quote=""/>
+	 	<type label="SMALLINT" length="0" sql="SMALLINT" quote=""/>
+	 	<type label="MEDIUMINT" length="0" sql="MEDIUMINT" quote=""/>
+	 	<type label="INT" length="0" sql="INT" quote=""/>
+		<type label="BIGINT" length="0" sql="BIGINT" quote=""/>
+		<type label="Decimal" length="1" sql="DECIMAL" re="DEC" quote=""/>
+		<type label="Single precision" length="0" sql="FLOAT" quote=""/>
+		<type label="Double precision" length="0" sql="DOUBLE" re="DOUBLE" quote=""/>
+	</group>
+
+	<group label="Character" color="rgb(255,200,200)">
+		<type label="Char" length="1" sql="CHAR" quote="'"/>
+		<type label="Varchar" length="1" sql="VARCHAR" quote="'"/>
+		<type label="Text" length="0" sql="MEDIUMTEXT" re="TEXT" quote="'"/>
+		<type label="Binary" length="1" sql="BINARY" quote="'"/>
+		<type label="Varbinary" length="1" sql="VARBINARY" quote="'"/>
+		<type label="BLOB" length="0" sql="BLOB" re="BLOB" quote="'"/>
+	</group>
+
+	<group label="Date &amp; Time" color="rgb(200,255,200)">
+		<type label="Date" length="0" sql="DATE" quote="'"/>
+		<type label="Time" length="0" sql="TIME" quote="'"/>
+		<type label="Datetime" length="0" sql="DATETIME" quote="'"/>
+		<type label="Year" length="0" sql="YEAR" quote=""/>
+		<type label="Timestamp" length="0" sql="TIMESTAMP" quote="'"/>
+	</group>
+	
+	<group label="Miscellaneous" color="rgb(200,200,255)">
+		<type label="ENUM" length="1" sql="ENUM" quote=""/>
+		<type label="SET" length="1" sql="SET" quote=""/>
+		<type label="Bit" length="0" sql="bit" quote=""/>
+	</group>
+</datatypes><table x="101" y="52" name="buy">
+<row name="Order_id" null="0" autoincrement="1">
+<datatype>INTEGER(10)</datatype>
+</row>
+<row name="Member_ID" null="1" autoincrement="0">
+<datatype>INTEGER(5)</datatype>
+<default>NULL</default></row>
+<row name="Order_date" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+</row>
+<row name="Status" null="0" autoincrement="0">
+<datatype>ENUM('訂單處理中','已出貨','付款完成','訂單已完成','已取消','已退款')</datatype>
+</row>
+<row name="Shipping_address" null="0" autoincrement="0">
+<datatype>VARCHAR(255)</datatype>
+</row>
+<key type="PRIMARY" name="">
+<part>Order_id</part>
+</key>
+</table>
+<table x="302" y="52" name="buy_item">
+<row name="Order_Item_ID" null="0" autoincrement="1">
+<datatype>INTEGER(10)</datatype>
+</row>
+<row name="Order_ID" null="0" autoincrement="0">
+<datatype>INTEGER(10)</datatype>
+</row>
+<row name="Product_ID" null="0" autoincrement="0">
+<datatype>INTEGER(10)</datatype>
+</row>
+<row name="Quantity" null="0" autoincrement="0">
+<datatype>INTEGER(10)</datatype>
+</row>
+<row name="total_item_price" null="0" autoincrement="0">
+<datatype>DECIMAL(10,2)</datatype>
+</row>
+<key type="PRIMARY" name="">
+<part>Order_Item_ID</part>
+</key>
+</table>
+<table x="101" y="222" name="class">
+<row name="Class_ID" null="0" autoincrement="1">
+<datatype>INTEGER(5)</datatype>
+</row>
+<row name="Class_name" null="0" autoincrement="0">
+<datatype>VARCHAR(255)</datatype>
+</row>
+<row name="Class_description" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+</row>
+<row name="C_price" null="0" autoincrement="0">
+<datatype>INTEGER(10)</datatype>
+</row>
+<row name="C_discount_price" null="0" autoincrement="0">
+<datatype>INTEGER(5)</datatype>
+</row>
+<row name="F_Speaker_ID" null="0" autoincrement="0">
+<datatype>INTEGER(5)</datatype>
+</row>
+<row name="Class_person_limit" null="0" autoincrement="0">
+<datatype>INTEGER(5)</datatype>
+</row>
+<row name="Start_date" null="0" autoincrement="0">
+<datatype>DATE</datatype>
+</row>
+<row name="End_date" null="0" autoincrement="0">
+<datatype>DATE</datatype>
+</row>
+<row name="Class_date" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+</row>
+<row name="Class_end_date" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+</row>
+<row name="Class_category_ID" null="0" autoincrement="0">
+<datatype>INTEGER(10)</datatype>
+</row>
+<row name="valid" null="0" autoincrement="0">
+<datatype>TINYINT(4)</datatype>
+<default>1</default></row>
+<key type="PRIMARY" name="">
+<part>Class_ID</part>
+</key>
+</table>
+<table x="301" y="223" name="class_categories">
+<row name="Class_cate_ID" null="0" autoincrement="1">
+<datatype>INTEGER(10)</datatype>
+</row>
+<row name="Class_cate_name" null="0" autoincrement="0">
+<datatype>VARCHAR(255)</datatype>
+</row>
+<row name="C_Description" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+</row>
+<row name="valid" null="0" autoincrement="0">
+<datatype>TINYINT(2)</datatype>
+<default>1</default></row>
+<key type="PRIMARY" name="">
+<part>Class_cate_ID</part>
+</key>
+</table>
+<table x="501" y="223" name="class_image">
+<row name="Image_ID" null="0" autoincrement="1">
+<datatype>INTEGER(10)</datatype>
+</row>
+<row name="F_Class_ID" null="0" autoincrement="0">
+<datatype>INTEGER(10)</datatype>
+</row>
+<row name="Image_URL" null="0" autoincrement="0">
+<datatype>VARCHAR(255)</datatype>
+</row>
+<row name="Description" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+</row>
+<row name="Sort_order" null="0" autoincrement="0">
+<datatype>INTEGER(5)</datatype>
+</row>
+<row name="Upload_date" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+</row>
+<key type="PRIMARY" name="">
+<part>Image_ID</part>
+</key>
+</table>
+<table x="682" y="221" name="class_like">
+<row name="Like_ID" null="0" autoincrement="1">
+<datatype>INTEGER(11)</datatype>
+</row>
+<row name="User_ID" null="0" autoincrement="0">
+<datatype>INTEGER(5)</datatype>
+</row>
+<row name="Class_ID" null="0" autoincrement="0">
+<datatype>INTEGER(5)</datatype>
+</row>
+<key type="PRIMARY" name="">
+<part>Like_ID</part>
+</key>
+</table>
+<table x="1041" y="221" name="coupons">
+<row name="Coupon_ID " null="0" autoincrement="1">
+<datatype>INTEGER(10)</datatype>
+</row>
+<row name="C_name" null="0" autoincrement="0">
+<datatype>VARCHAR(20)</datatype>
+</row>
+<row name="C_code" null="0" autoincrement="0">
+<datatype>VARCHAR(255)</datatype>
+</row>
+<row name="Discount_amount" null="0" autoincrement="0">
+<datatype>DECIMAL(7,2)</datatype>
+</row>
+<row name="Discount_type" null="0" autoincrement="0">
+<datatype>ENUM('百分比', '金額')</datatype>
+</row>
+<row name="Coupon_description" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+</row>
+<row name="Valid_start_date" null="0" autoincrement="0">
+<datatype>DATE</datatype>
+</row>
+<row name="Valid_end_date" null="0" autoincrement="0">
+<datatype>DATE</datatype>
+</row>
+<row name="coupon_image" null="0" autoincrement="0">
+<datatype>VARCHAR(50)</datatype>
+</row>
+<row name="minimum_spend" null="0" autoincrement="0">
+<datatype>INTEGER(10)</datatype>
+</row>
+<row name="valid" null="0" autoincrement="0">
+<datatype>TINYINT(4)</datatype>
+<default>1</default></row>
+<key type="PRIMARY" name="">
+<part>Coupon_ID </part>
+</key>
+</table>
+<table x="1212" y="221" name="coupon_categories">
+<row name="id" null="0" autoincrement="1">
+<datatype>INTEGER(11)</datatype>
+</row>
+<row name="coupon_id" null="0" autoincrement="0">
+<datatype>INTEGER(5)</datatype>
+</row>
+<row name="category_id" null="0" autoincrement="0">
+<datatype>INTEGER(5)</datatype>
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="102" y="602" name="event">
+<row name="Event_ID " null="0" autoincrement="1">
+<datatype>INTEGER(10)</datatype>
+</row>
+<row name="Title_E_name" null="0" autoincrement="0">
+<datatype>VARCHAR(55)</datatype>
+</row>
+<row name="Content" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+</row>
+<row name="Publish_date" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+</row>
+<row name="Event_category_ID " null="0" autoincrement="0">
+<datatype>INTEGER(10)</datatype>
+</row>
+<key type="PRIMARY" name="">
+<part>Event_ID </part>
+</key>
+</table>
+<table x="301" y="602" name="Event_categories">
+<row name="Event_cate_ID " null="0" autoincrement="1">
+<datatype>INTEGER(10)</datatype>
+</row>
+<row name="Event_cate_name" null="0" autoincrement="0">
+<datatype>VARCHAR(255)</datatype>
+<default>'0'</default></row>
+<row name="E_Description" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+</row>
+<key type="PRIMARY" name="">
+<part>Event_cate_ID </part>
+</key>
+</table>
+<table x="502" y="602" name="event_image">
+<row name="Image_ID " null="0" autoincrement="1">
+<datatype>INTEGER(10)</datatype>
+</row>
+<row name="F_Event_ID " null="0" autoincrement="0">
+<datatype>INTEGER(10)</datatype>
+</row>
+<row name="Image_URL" null="0" autoincrement="0">
+<datatype>VARCHAR(255)</datatype>
+</row>
+<row name="Description" null="0" autoincrement="0">
+<datatype>VARCHAR(255)</datatype>
+</row>
+<row name="Sort_order" null="0" autoincrement="0">
+<datatype>INTEGER(5)</datatype>
+</row>
+<row name="Upload_date" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+</row>
+<key type="PRIMARY" name="">
+<part>Image_ID </part>
+</key>
+</table>
+<table x="290" y="737" name="member">
+<row name="id" null="0" autoincrement="1">
+<datatype>INTEGER(5)</datatype>
+</row>
+<row name="User_name" null="0" autoincrement="0">
+<datatype>VARCHAR(20)</datatype>
+</row>
+<row name="Account" null="0" autoincrement="0">
+<datatype>VARCHAR(20)</datatype>
+</row>
+<row name="Password" null="0" autoincrement="0">
+<datatype>VARCHAR(55)</datatype>
+</row>
+<row name="Email" null="0" autoincrement="0">
+<datatype>VARCHAR(50)</datatype>
+</row>
+<row name="Phone" null="0" autoincrement="0">
+<datatype>VARCHAR(255)</datatype>
+</row>
+<row name="Gender" null="0" autoincrement="0">
+<datatype>ENUM('M', 'F', 'Other')</datatype>
+</row>
+<row name="date_of_birth" null="0" autoincrement="0">
+<datatype>DATE</datatype>
+</row>
+<row name="Create_date" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+</row>
+<row name="Last_login" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+</row>
+<row name="valid" null="0" autoincrement="0">
+<datatype>TINYINT(2)</datatype>
+<default>1</default></row>
+<row name="User_image" null="0" autoincrement="0">
+<datatype>VARCHAR(255)</datatype>
+</row>
+<row name="new_F_ register_id" null="0" autoincrement="0">
+<datatype>INTEGER(10)</datatype>
+</row>
+<row name="adress" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default><comment>new</comment>
+</row>
+<row name="user_level" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><comment>new</comment>
+</row>
+<row name="user_coupon_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><comment>new</comment>
+</row>
+<row name="user_product" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><comment>new</comment>
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="102" y="1152" name="product">
+<row name="id" null="0" autoincrement="1">
+<datatype>INTEGER(10)</datatype>
+</row>
+<row name="category_id" null="0" autoincrement="0">
+<datatype>INTEGER(10)</datatype>
+</row>
+<row name="name" null="0" autoincrement="0">
+<datatype>VARCHAR(20)</datatype>
+</row>
+<row name="description" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+</row>
+<row name="price" null="0" autoincrement="0">
+<datatype>INTEGER(10)</datatype>
+</row>
+<row name="stock_quantity" null="0" autoincrement="0">
+<datatype>INTEGER(5)</datatype>
+</row>
+<row name="F_coupon_id" null="0" autoincrement="0">
+<datatype>INTEGER(10)</datatype>
+</row>
+<row name="upload_date" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+</row>
+<row name="valid" null="0" autoincrement="0">
+<datatype>TINYINT(2)</datatype>
+<default>1</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="302" y="1151" name="product_categories">
+<row name="Product_cate_ID" null="0" autoincrement="1">
+<datatype>INTEGER(10)</datatype>
+</row>
+<row name="Product_cate_name" null="0" autoincrement="0">
+<datatype>VARCHAR(255)</datatype>
+</row>
+<row name="P_Description" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+</row>
+<row name="valid" null="0" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>1</default></row>
+<key type="PRIMARY" name="">
+<part>Product_cate_ID</part>
+</key>
+</table>
+<table x="512" y="1152" name="product_image">
+<row name="id" null="0" autoincrement="1">
+<datatype>INTEGER(10)</datatype>
+</row>
+<row name="F_product_id" null="0" autoincrement="0">
+<datatype>INTEGER(10)</datatype>
+</row>
+<row name="image_url" null="0" autoincrement="0">
+<datatype>VARCHAR(255)</datatype>
+</row>
+<row name="discription" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+</row>
+<row name="sort_order" null="0" autoincrement="0">
+<datatype>INTEGER(5)</datatype>
+</row>
+<row name="upload_date" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="701" y="1151" name="product_like">
+<row name="Like_ID" null="0" autoincrement="1">
+<datatype>INTEGER(10)</datatype>
+</row>
+<row name="User_ID" null="0" autoincrement="0">
+<datatype>INTEGER(10)</datatype>
+</row>
+<row name="Product_ID" null="0" autoincrement="0">
+<datatype>INTEGER(5)</datatype>
+</row>
+<key type="PRIMARY" name="">
+<part>Like_ID</part>
+</key>
+</table>
+<table x="102" y="1452" name="recipe">
+<row name="Recipe_ID" null="0" autoincrement="1">
+<datatype>INTEGER(10)</datatype>
+</row>
+<row name="Title_R_name" null="0" autoincrement="0">
+<datatype>VARCHAR(55)</datatype>
+</row>
+<row name="Image_URL" null="0" autoincrement="0">
+<datatype>VARCHAR(255)</datatype>
+</row>
+<row name="Content" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+</row>
+<row name="Publish_date" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+</row>
+<row name="Recipe_category_ID" null="0" autoincrement="0">
+<datatype>INTEGER(10)</datatype>
+</row>
+<row name="valid" null="0" autoincrement="0">
+<datatype>TINYINT(2)</datatype>
+<default>1</default></row>
+<row name="recipe_speaker_id" null="0" autoincrement="0">
+<datatype>INTEGER(10)</datatype>
+<comment>new</comment>
+</row>
+<key type="PRIMARY" name="">
+<part>Recipe_ID</part>
+</key>
+</table>
+<table x="301" y="1452" name="recipe_categories">
+<row name="Recipe_cate_ID" null="0" autoincrement="1">
+<datatype>INTEGER(5)</datatype>
+</row>
+<row name="Recipe_cate_name" null="0" autoincrement="0">
+<datatype>VARCHAR(55)</datatype>
+</row>
+<row name="R_Description" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+</row>
+<row name="valid" null="0" autoincrement="0">
+<datatype>TINYINT(2)</datatype>
+<default>1</default></row>
+<key type="PRIMARY" name="">
+<part>Recipe_cate_ID</part>
+</key>
+</table>
+<table x="501" y="1452" name="recipe_image">
+<row name="Image_ID" null="0" autoincrement="1">
+<datatype>INTEGER(10)</datatype>
+</row>
+<row name="F_Recipe_ID" null="0" autoincrement="0">
+<datatype>INTEGER(10)</datatype>
+</row>
+<row name="Image_URL" null="0" autoincrement="0">
+<datatype>VARCHAR(255)</datatype>
+</row>
+<row name="Description" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+</row>
+<row name="Sort_order" null="0" autoincrement="0">
+<datatype>INTEGER(5)</datatype>
+</row>
+<row name="Upload_date" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+</row>
+<key type="PRIMARY" name="">
+<part>Image_ID</part>
+</key>
+</table>
+<table x="702" y="1451" name="recipe_like">
+<row name="Like_ID" null="0" autoincrement="1">
+<datatype>INTEGER(10)</datatype>
+</row>
+<row name="User_ID" null="0" autoincrement="0">
+<datatype>INTEGER(10)</datatype>
+</row>
+<row name="Recipe_ID" null="0" autoincrement="0">
+<datatype>INTEGER(10)</datatype>
+</row>
+<key type="PRIMARY" name="">
+<part>Like_ID</part>
+</key>
+</table>
+<table x="103" y="1704" name="speaker">
+<row name="Speaker_ID" null="0" autoincrement="1">
+<datatype>INTEGER(10)</datatype>
+</row>
+<row name="Speaker_name" null="0" autoincrement="0">
+<datatype>VARCHAR(55)</datatype>
+</row>
+<row name="Speaker_description" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+</row>
+<row name="Image" null="0" autoincrement="0">
+<datatype>VARCHAR(255)</datatype>
+</row>
+<row name="valid" null="0" autoincrement="0">
+<datatype>TINYINT(2)</datatype>
+<default>1</default></row>
+<key type="PRIMARY" name="">
+<part>Speaker_ID</part>
+</key>
+</table>
+<table x="853" y="202" name="class_content">
+<row name="id" null="0" autoincrement="1">
+<datatype>INTEGER(10)</datatype>
+</row>
+<row name="F_Class_ID" null="0" autoincrement="0">
+<datatype>INTEGER(10)</datatype>
+</row>
+<row name="contents" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+</row>
+<row name="sort_order" null="0" autoincrement="0">
+<datatype>INTEGER(10)</datatype>
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>new</comment>
+</table>
+<table x="303" y="1682" name="speaker_exp">
+<row name="id" null="0" autoincrement="1">
+<datatype>INTEGER(10)</datatype>
+</row>
+<row name="contents" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+</row>
+<row name="sort_order" null="0" autoincrement="0">
+<datatype>INTEGER(10)</datatype>
+</row>
+<row name="speak_id" null="0" autoincrement="0">
+<datatype>INTEGER(10)</datatype>
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>new</comment>
+</table>
+<table x="502" y="1681" name="speaker_li">
+<row name="id" null="1" autoincrement="0">
+<datatype>INTEGER(10)</datatype>
+<default>NULL</default></row>
+<row name="contents" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+</row>
+<row name="sort_order" null="0" autoincrement="0">
+<datatype>INTEGER(10)</datatype>
+</row>
+<row name="speak_id" null="0" autoincrement="0">
+<datatype>INTEGER(10)</datatype>
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>new</comment>
+</table>
+<table x="502" y="801" name="new_login">
+<row name="id" null="0" autoincrement="1">
+<datatype>INTEGER(10)</datatype>
+</row>
+<row name="User_name" null="0" autoincrement="0">
+<datatype>VARCHAR(20)</datatype>
+</row>
+<row name="Password" null="0" autoincrement="0">
+<datatype>VARCHAR(55)</datatype>
+</row>
+<row name="Last_Login_Time" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+</row>
+<row name="Login_Attempts" null="0" autoincrement="0">
+<datatype>INTEGER(5)</datatype>
+</row>
+<row name="valid" null="0" autoincrement="0">
+<datatype>TINYINT(2)</datatype>
+<default>1</default></row>
+<row name="Create_date" null="0" autoincrement="0">
+<datatype>DATE</datatype>
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="829" y="611" name="new_register">
+<row name="id" null="0" autoincrement="1">
+<datatype>INTEGER(10)</datatype>
+</row>
+<row name="User_name" null="0" autoincrement="0">
+<datatype>VARCHAR(20)</datatype>
+</row>
+<row name="Email" null="0" autoincrement="0">
+<datatype>VARCHAR(50)</datatype>
+</row>
+<row name="Phone" null="0" autoincrement="0">
+<datatype>VARCHAR(255)</datatype>
+</row>
+<row name="Gender" null="0" autoincrement="0">
+<datatype>ENUM('M', 'F', 'Other')</datatype>
+</row>
+<row name="date_of_birth" null="0" autoincrement="0">
+<datatype>DATE</datatype>
+</row>
+<row name="Password" null="0" autoincrement="0">
+<datatype>VARCHAR(55)</datatype>
+</row>
+<row name="valid" null="0" autoincrement="0">
+<datatype>TINYINT(2)</datatype>
+<default>1</default></row>
+<row name="Create_date" null="0" autoincrement="0">
+<datatype>DATE</datatype>
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="702" y="801" name="new_Discounted_Products">
+<row name="id" null="0" autoincrement="1">
+<datatype>INTEGER(10)</datatype>
+</row>
+<row name="F_product_id" null="0" autoincrement="0">
+<datatype>INTEGER(10)</datatype>
+</row>
+<row name="Discount_type" null="0" autoincrement="0">
+<datatype>ENUM('百分比', '金額')</datatype>
+</row>
+<row name="Valid_start_date" null="0" autoincrement="0">
+<datatype>DATE</datatype>
+</row>
+<row name="Valid_end_date" null="0" autoincrement="0">
+<datatype>DATE</datatype>
+</row>
+<row name="valid" null="0" autoincrement="0">
+<datatype>TINYINT(2)</datatype>
+<default>1</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="1000" y="799" name="new_Discounted_categories">
+<row name="Discounted_cate_id" null="0" autoincrement="1">
+<datatype>INTEGER(10)</datatype>
+</row>
+<row name="Discounted_cate_name" null="0" autoincrement="0">
+<datatype>VARCHAR(255)</datatype>
+</row>
+<row name="P_Description" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+</row>
+<row name="valid" null="0" autoincrement="0">
+<datatype>TINYINT(2)</datatype>
+<default>1</default></row>
+<key type="PRIMARY" name="">
+<part>Discounted_cate_id</part>
+</key>
+</table>
+<table x="1029" y="1175" name="new_order">
+<row name="Order_ID" null="0" autoincrement="1">
+<datatype>INTEGER(10)</datatype>
+<default>NULL</default></row>
+<row name="Customer_ID" null="0" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="Order_date" null="0" autoincrement="1">
+<datatype>DATETIME</datatype>
+<default>'NULL'</default><comment>訂單日期</comment>
+</row>
+<row name="Total_amount" null="0" autoincrement="1">
+<datatype>DECIMAL(10,2)</datatype>
+<default>NULL</default><comment>總金額</comment>
+</row>
+<row name="status" null="0" autoincrement="1">
+<datatype>VARCHAR(50)</datatype>
+<default>'NULL'</default></row>
+<row name="Shipping_address" null="0" autoincrement="1">
+<datatype>VARCHAR(255)</datatype>
+<default>'NULL'</default></row>
+<row name="Payment_method	" null="0" autoincrement="1">
+<datatype>VARCHAR(50)</datatype>
+<default>'NULL'</default></row>
+<row name="Shipping_date" null="1" autoincrement="0">
+<datatype>DATE</datatype>
+<default>NULL</default></row>
+<row name="Completed_date" null="1" autoincrement="0">
+<datatype>DATE</datatype>
+<default>NULL</default></row>
+<row name="product_id" null="0" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="class_id" null="0" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="Coupon_ID" null="0" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>Order_ID</part>
+</key>
+<comment>訂單資料表</comment>
+</table>
+<table x="1218" y="1225" name="new_Order_Detail">
+<row name="Order_Item_ID" null="0" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="Order_ID" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="product_id" null="0" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="Quantity" null="0" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="Unit_price" null="0" autoincrement="1">
+<datatype>DECIMAL</datatype>
+<default>NULL</default></row>
+<row name="Total_item_price" null="1" autoincrement="0">
+<datatype>DECIMAL</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>Order_Item_ID</part>
+</key>
+<comment>訂單明細資料表</comment>
+</table>
+</sql>
